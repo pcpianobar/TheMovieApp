@@ -16,6 +16,7 @@ class InfiniteScrollListener(
     private var visibleItemCount = 0
     private var totalItemCount = 0
 
+
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
         super.onScrolled(recyclerView, dx, dy)
 

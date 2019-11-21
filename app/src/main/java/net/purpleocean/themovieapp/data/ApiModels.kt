@@ -1,6 +1,6 @@
 package net.purpleocean.themovieapp.data
 
-class MovieListReponse (
+class MovieListResponse (
     var page: Int,
     val results: List<MovieDetailResponse>
 )

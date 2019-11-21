@@ -5,7 +5,7 @@ import androidx.collection.SparseArrayCompat
 import androidx.recyclerview.widget.RecyclerView
 import net.purpleocean.themovieapp.data.MovieItem
 
-class MovieAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder> () {
+class MovieAdapter(listener: MovieItemAdapter.ViewSelectedListener): RecyclerView.Adapter<RecyclerView.ViewHolder> () {
 
     private var items: ArrayList<ViewType>  // (1)
     private var delegateAdapters = SparseArrayCompat<ItemAdapter>() // (2)
@@ -16,7 +16,7 @@ class MovieAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder> () {
     // (4)
     init {
         delegateAdapters.put(AdapterType.LOADING, LoadingItemAdapter())
-        delegateAdapters.put(AdapterType.MOVIE, MovieItemAdapter())
+        delegateAdapters.put(AdapterType.MOVIE, MovieItemAdapter(listener))
         items = ArrayList()
         items.add(loadingItem)
     }

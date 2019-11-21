@@ -2,13 +2,18 @@ package net.purpleocean.themovieapp.ui.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.item_movie.view.*
 import net.purpleocean.themovieapp.data.MovieItem
 import net.purpleocean.themovieapp.utils.inflate
 import net.purpleocean.themovieapp.utils.loadImg
 import net.purpleocean.themovieapp.R
 
-class MovieItemAdapter : ItemAdapter {
+class MovieItemAdapter(val viewActions: ViewSelectedListener) : ItemAdapter {
+
+    interface ViewSelectedListener {
+        fun onItemSelected(url: String?)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         return MovieViewHolder(parent)
@@ -38,6 +43,14 @@ class MovieItemAdapter : ItemAdapter {
             voteCount.text = "${item.vote_count} 투표"
             tvTitle.text = item.title
             tvAverage.rating = item.vote_average / 2  // (7)
+
+            super.itemView.setOnClickListener {
+                viewActions.onItemSelected("https://image.tmdb.org/t/p/w500/${item.poster_path}")
+            }
+
+            btnReserve.setOnClickListener {
+                Snackbar.make(it, "스낵바입니다.", Snackbar.LENGTH_LONG)
+            }
         }
     }
 }

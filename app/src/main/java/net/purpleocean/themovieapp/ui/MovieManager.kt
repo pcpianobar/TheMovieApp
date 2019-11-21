@@ -1,10 +1,7 @@
 package net.purpleocean.themovieapp.ui
 
 import io.reactivex.Observable
-import net.purpleocean.themovieapp.data.API_KEY
-import net.purpleocean.themovieapp.data.MovieItem
-import net.purpleocean.themovieapp.data.MovieList
-import net.purpleocean.themovieapp.data.RestApi
+import net.purpleocean.themovieapp.data.*
 
 class MovieManager(private val api: RestApi = RestApi()) {
     fun getMovieList(page: String): Observable<MovieList> {
@@ -39,5 +36,24 @@ class MovieManager(private val api: RestApi = RestApi()) {
                 subscriber.onError(Throwable(response.message()))
             }
         }
+    }
+
+    suspend fun getMovieList(param: Map<String, String>): MovieList {
+        val result = api.getMovieListCo(param)
+        return process(result)
+    }
+
+    private fun process(response: MovieListResponse): MovieList {
+        val list = response.results.map {
+            MovieItem(
+                it.vote_count,
+                it.vote_average,
+                it.title,
+                it.release_date,
+                it.poster_path,
+                it.overview
+            )
+        }
+        return MovieList(response.page, list)
     }
 }
