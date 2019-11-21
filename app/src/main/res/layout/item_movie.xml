@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                                   android:layout_width="match_parent"
-                                   android:layout_height="match_parent">
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_margin="5dp"
+        android:layout_marginTop="10dp"
+        android:elevation="4dp">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -11,11 +15,10 @@
             android:padding="10dp">
 
         <ImageView
+                android:id="@+id/img_poster"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:id="@+id/img_poster"
-                android:scaleType="centerCrop"
-                android:contentDescription="포스터"/>
+                android:scaleType="centerCrop" />
 
         <LinearLayout
                 android:layout_width="0dp"
@@ -25,35 +28,35 @@
                 android:orientation="vertical">
 
             <TextView
+                    android:id="@+id/tv_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_title"
                     android:text="Title"
                     android:textColor="#000000"
                     android:textSize="17sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
             <RatingBar
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/rate_vote_avg"
                     style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:isIndicator="true"
                     android:numStars="5"
                     android:progressTint="@color/colorRateMovie"
                     android:rating="1.5"
-                    android:stepSize="0.5"/>
+                    android:stepSize="0.5" />
 
             <TextView
                     android:id="@+id/tv_release_date"
                     style="@style/screen_text"
-                    android:text="개봉일: 2018-01-01"/>
+                    android:text="개봉일: 2018-01-01" />
 
             <TextView
                     android:id="@+id/tv_overview"
                     style="@style/screen_text"
-                    android:text="영화 설명을 나타냅니다."/>
+                    android:text="영화 설명을 나타냅니다." />
 
         </LinearLayout>
 
@@ -64,21 +67,25 @@
                 android:orientation="vertical">
 
             <TextView
+                    android:id="@+id/tv_vote_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="투표수"
                     android:textColor="@color/colorVoteCount"
-                    android:textSize="10sp"/>
+                    android:textSize="10sp" />
 
             <Button
+                    android:id="@+id/btn_reserve"
                     android:layout_width="60dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/shape_btn_movie"
                     android:text="예매"
                     android:textColor="@color/colorVoteCount"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
         </LinearLayout>
+
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>
